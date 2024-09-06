@@ -2,6 +2,11 @@
 
 Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP. Optimized for programming and redteam operations.
 
+## TODO
+- Add support for noVNC and RDP.
+- Find necessary and add.
+- Verify the usability of scripts.
+
 ## Build and run the image
 ```bash
 docker build -t vnc_ubuntu_xfce .

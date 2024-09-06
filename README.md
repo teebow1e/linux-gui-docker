@@ -1,5 +1,7 @@
 # linux-gui-docker (Xfce/VNC)
 
+Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP.
+
 ## Build and run the image
 ```
 docker build -t vnc_ubuntu_xfce .

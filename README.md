@@ -1,6 +1,6 @@
 # linux-gui-docker (Xfce/VNC)
 
-Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP.
+Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP. Optimized for programming and redteam operations.
 
 ## Build and run the image
 ```bash
@@ -107,3 +107,6 @@ Thanks to [jlesage](https://hub.docker.com/r/jlesage/firefox/#increasing-shared-
 ```
 --shm-size 2g
 ```
+
+## Credit
+This project is a modified version of @Fullaxx [ubuntu-desktop](https://github.com/Fullaxx/ubuntu-desktop).

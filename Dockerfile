@@ -29,6 +29,7 @@ RUN apt-get install -y --no-install-recommends \
       tigervnc-standalone-server \
       tigervnc-tools \
       tzdata \
+      xterm \
       x11-utils \
       x11-xserver-utils \
       xfce4 \
@@ -42,7 +43,8 @@ RUN apt-get install -y --no-install-recommends \
         htop \
         tree \
         python3-pip \
-        unzip
+        unzip \
+        file
 
 # ------------------------------------------------------------------------------
 # Perform clean-up
@@ -61,12 +63,16 @@ COPY app/app.sh app/imagestart.sh app/tiger.sh /app/
 COPY wallpaper/wallpaper.png /tmp/wallpaper.png
 COPY conf/xstartup /usr/share/ubuntu-desktop/vnc/
 COPY conf/sudo /usr/share/ubuntu-desktop/sudo
-COPY conf/bash.colors conf/color_prompt.sh conf/lang.sh /opt/bash/
-COPY scripts/*.sh /app/scripts/
+COPY conf/bash.colors conf/color_prompt.sh /opt/bash/
+COPY scripts/ /app/scripts/
 
 # ------------------------------------------------------------------------------
 # Install xfce4 scripts and configuration files
 COPY xfce4/* /root/.config/autostart/
+
+# ------------------------------------------------------------------------------
+# Create a symbolic link to the scripts folder
+RUN ln -s /app/scripts/ "$HOME/scripts"
 
 # ------------------------------------------------------------------------------
 # Expose ports

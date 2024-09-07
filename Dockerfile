@@ -25,16 +25,15 @@ RUN apt-get install -y --no-install-recommends \
       locales \
       vim \
       sudo \
-      tigervnc-common \
-      tigervnc-standalone-server \
-      tigervnc-tools \
       tzdata \
       xterm \
       x11-utils \
       x11-xserver-utils \
       xfce4 \
       xfce4-goodies \
-      xfonts-base
+      xfonts-base \
+      xorgxrdp \
+      xrdp
 
 # ------------------------------------------------------------------------------
 # Install development packages (add more if needed)
@@ -59,16 +58,11 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
 
 # ------------------------------------------------------------------------------
 # Install scripts and configuration files
-COPY app/app.sh app/imagestart.sh app/tiger.sh /app/
-COPY wallpaper/wallpaper.png /tmp/wallpaper.png
+COPY app/app.sh app/imagestart.sh app/xrdp.sh /app/ 
 COPY conf/xstartup /usr/share/ubuntu-desktop/vnc/
 COPY conf/sudo /usr/share/ubuntu-desktop/sudo
 COPY conf/bash.colors conf/color_prompt.sh /opt/bash/
 COPY scripts/ /app/scripts/
-
-# ------------------------------------------------------------------------------
-# Install xfce4 scripts and configuration files
-COPY xfce4/* /root/.config/autostart/
 
 # ------------------------------------------------------------------------------
 # Create a symbolic link to the scripts folder
@@ -76,7 +70,7 @@ RUN ln -s /app/scripts/ "$HOME/scripts"
 
 # ------------------------------------------------------------------------------
 # Expose ports
-EXPOSE 5901
+EXPOSE 3389
 
 # ------------------------------------------------------------------------------
 # Define default command

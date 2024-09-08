@@ -8,6 +8,9 @@ docker build -t ubuntu_xfce_vnc .
 docker run -d -p 0.0.0.0:5901:5901 -p 0.0.0.0:9987:9987 -e VNCPASS='ubuntupass' -e VNCRES='1920x1080' -e NOVNCPORT='9987' --shm-size 2g ubuntu_xfce_vnc
 ```
 
+## Docker Compose for a quick run
+`docker compose -d` will run the project with default setting: VNC on :5901, noVNC on :6080.
+
 ## VNC Options
 ### Set VNC color depth
 - Default value: 24

@@ -1,0 +1,12 @@
+services:
+  ubuntu-xfce:
+    ports:
+      - 0.0.0.0:5901:5901 # VNC
+      - 0.0.0.0:6080:6080 # noVNC
+    build: 
+      dockerfile: Dockerfile
+    environment:
+      - VNCPASS=ubuntupass
+      - VNCRES=1920x1080
+      - NOVNCPORT=6080
+    shm_size: '2gb'

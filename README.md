@@ -9,7 +9,7 @@ docker run -d -p 0.0.0.0:3389:3389 -e RDPUSER='ubuntu' -e RDPPASS='ubuntupass' -
 ```
 
 ## Docker Compose for a quick run
-`docker compose -d` will run the project with default setting: RDP on `:3389`.
+`docker compose up -d` will run the project with default setting: RDP on `:3389`.
 
 ## RDP Options
 ### (Mandatory) Create a new non-root account with password

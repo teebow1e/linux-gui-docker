@@ -44,7 +44,8 @@ RUN apt-get install -y --no-install-recommends \
         tree \
         python3-pip \
         unzip \
-        file
+        file \
+        git
 
 # ------------------------------------------------------------------------------
 # Perform clean-up
@@ -59,11 +60,12 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
 
 # ------------------------------------------------------------------------------
 # Install scripts and configuration files
-COPY app/app.sh app/imagestart.sh app/tiger.sh /app/
+COPY app/app.sh app/imagestart.sh app/tiger.sh app/novnc.sh /app/
 COPY wallpaper/wallpaper.png /tmp/wallpaper.png
 COPY conf/xstartup /usr/share/ubuntu-desktop/vnc/
 COPY conf/sudo /usr/share/ubuntu-desktop/sudo
 COPY conf/bash.colors conf/color_prompt.sh /opt/bash/
+COPY novnc/novnc_redirect.html /tmp/novnc_redirect.html
 COPY scripts/ /app/scripts/
 
 # ------------------------------------------------------------------------------
@@ -72,11 +74,8 @@ COPY xfce4/* /root/.config/autostart/
 
 # ------------------------------------------------------------------------------
 # Create a symbolic link to the scripts folder
-RUN ln -s /app/scripts/ "$HOME/scripts"
-
-# ------------------------------------------------------------------------------
-# Expose ports
-EXPOSE 5901
+RUN ln -s /app/scripts/ /scripts
+RUN chmod -R 755 /app/scripts/
 
 # ------------------------------------------------------------------------------
 # Define default command

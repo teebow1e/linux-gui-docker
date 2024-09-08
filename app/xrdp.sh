@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "[+] Running RDP initialization script..."
+
 if [ -n "${USER}" ]; then
   chown -R ${USER}.${GROUP} ${HOME}
 fi

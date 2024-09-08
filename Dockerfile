@@ -43,7 +43,8 @@ RUN apt-get install -y --no-install-recommends \
         tree \
         python3-pip \
         unzip \
-        file
+        file \
+        git
 
 # ------------------------------------------------------------------------------
 # Perform clean-up
@@ -66,12 +67,9 @@ COPY scripts/ /app/scripts/
 
 # ------------------------------------------------------------------------------
 # Create a symbolic link to the scripts folder
-RUN ln -s /app/scripts/ "$HOME/scripts"
+RUN ln -s /app/scripts/ /scripts
+RUN chmod -R 755 /app/scripts/
 
 # ------------------------------------------------------------------------------
-# Expose ports
-EXPOSE 3389
-
-# ------------------------------------------------------------------------------
-# Define default command
+# Define entrypoint
 ENTRYPOINT ["/app/app.sh"]

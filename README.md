@@ -1,12 +1,15 @@
 # linux-gui-docker (Xfce/RDP)
 
-Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP. Optimized for programming and redteam operations.
+Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through RDP. Optimized for programming and redteam operations.
 
 ## Build and run the image
 ```bash
 docker build -t ubuntu_xfce_rdp .
 docker run -d -p 0.0.0.0:3389:3389 -e RDPUSER='ubuntu' -e RDPPASS='ubuntupass' -e RDPUID='1000' --shm-size 2g ubuntu_xfce_rdp
 ```
+
+## Docker Compose for a quick run
+`docker compose -d` will run the project with default setting: RDP on `:3389`.
 
 ## RDP Options
 ### (Mandatory) Create a new non-root account with password

@@ -1,0 +1,11 @@
+services:
+  ubuntu-xfce:
+    ports:
+      - 0.0.0.0:3389:3389
+    build: 
+      dockerfile: Dockerfile
+    environment:
+      - RDPUSER='ubuntu'
+      - RDPPASS='ubuntupass'
+      - RDPUID='1000'
+    shm_size: '2gb'

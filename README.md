@@ -1,11 +1,11 @@
-# linux-gui-docker (Xfce/VNC)
+# linux-gui-docker (Xfce/VNC/noVNC)
 
-Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC/RDP. Optimized for programming and redteam operations.
+Docker image of Ubuntu 22.04 running Xfce4 desktop environment, remotely controlled through VNC (and noVNC). Optimized for programming and redteam operations.
 
 ## Build and run the image
 ```bash
 docker build -t ubuntu_xfce_vnc .
-docker run -d -p 0.0.0.0:5901:5901 -e VNCPASS='ubuntupass' -e VNCRES='1920x1080' --shm-size 2g ubuntu_xfce_vnc
+docker run -d -p 0.0.0.0:5901:5901 -p 0.0.0.0:9987:9987 -e VNCPASS='ubuntupass' -e VNCRES='1920x1080' -e NOVNCPORT='9987' --shm-size 2g ubuntu_xfce_vnc
 ```
 
 ## VNC Options
@@ -29,6 +29,14 @@ docker run -d -p 0.0.0.0:5901:5901 -e VNCPASS='ubuntupass' -e VNCRES='1920x1080'
 - In order to change to port 5909:
     ```
     -e VNCPORT='9'
+    ```
+
+### Set noVNC port
+> Explain: if this env variable is not set, noVNC will not be started, leaving you with only VNC
+- Default value: not set
+- In order to activate noVNC and run it at 6080:
+    ```
+    -e NOVNCPORT='9987'
     ```
 
 ### Password authentication for VNC session

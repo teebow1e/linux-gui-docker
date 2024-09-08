@@ -9,7 +9,7 @@ docker run -d -p 0.0.0.0:5901:5901 -p 0.0.0.0:9987:9987 -e VNCPASS='ubuntupass' 
 ```
 
 ## Docker Compose for a quick run
-`docker compose -d` will run the project with default setting: VNC on :5901, noVNC on :6080.
+`docker compose -d` will run the project with default setting: VNC on `:5901`, noVNC on `:6080`.
 
 ## VNC Options
 ### Set VNC color depth
@@ -39,7 +39,7 @@ docker run -d -p 0.0.0.0:5901:5901 -p 0.0.0.0:9987:9987 -e VNCPASS='ubuntupass' 
 - Default value: not set
 - In order to activate noVNC and run it at 6080:
     ```
-    -e NOVNCPORT='9987'
+    -e NOVNCPORT='6080'
     ```
 
 ### Password authentication for VNC session

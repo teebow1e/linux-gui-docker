@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "[+] Running VNC server initialization..."
+
 VNCDIR="${HOME}/.vnc"
 VNCAUTH="-SecurityTypes=None --I-KNOW-THIS-IS-INSECURE"
 VNCRES=${VNCRES:-1280x800}
@@ -22,7 +24,6 @@ if [ -n "${USER}" ]; then
   SUDOUSEROPT="-u ${USER}"
 fi
 
-# -fg will allow the openbox exit button to bring us down
+
 # using sudo here will allow 'docker stop' to bring us down quickly
-exec sudo ${SUDOUSEROPT} tigervncserver :${VNCPORT} -fg -localhost no \
-${VNCAUTH} -geometry ${VNCRES} -depth ${VNCDEPTH} -xstartup ${VNCSTART}
+exec sudo ${SUDOUSEROPT} tigervncserver :${VNCPORT} -localhost no ${VNCAUTH} -geometry ${VNCRES} -depth ${VNCDEPTH} -xstartup ${VNCSTART} &

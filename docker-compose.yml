@@ -5,7 +5,7 @@ services:
     build: 
       dockerfile: Dockerfile
     environment:
-      - RDPUSER='ubuntu'
-      - RDPPASS='ubuntupass'
-      - RDPUID='1000'
+      - RDPUSER=ubuntu
+      - RDPPASS=ubuntupass
+      - RDPUID=1000
     shm_size: '2gb'
